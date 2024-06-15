@@ -1,0 +1,24 @@
+.{
+    .name = "opencl",
+    .version = "3.0.16",
+    .minimum_zig_version = "0.13.0",
+
+    .dependencies = .{
+        .ocl_icd = .{
+            .url = "https://github.com/KhronosGroup/OpenCL-ICD-Loader/archive/refs/tags/v2024.05.08.tar.gz",
+            .hash = "122094ab49ec628c28a96be6476f386a27b13de464d832bbc6d4f8681d2de1da0eea",
+        },
+        .cl_h = .{
+            .url = "https://github.com/KhronosGroup/OpenCL-Headers/archive/refs/tags/v2024.05.08.tar.gz",
+            .hash = "1220ad35211a500b402000c3fb50dbf5754a4cd41539cdde4b00195af47dde2cf36f",
+        },
+    },
+
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "test.c",
+        "README.md",
+        ".gitignore",
+    },
+}
