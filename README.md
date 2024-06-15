@@ -9,12 +9,20 @@ This is not desirable becuase the linking is dynamic against `libOpenCL.so`.
 Static linking with zig provides better portability and reliability.
 
 ### Usage
-Add the right release to your `build.zig.zon` and add the following to your `build.zig`
+Add the right release to your `build.zig.zon`
+```
+zig fetch --save https://github.com/e253/zig-ocl/archive/refs/tags/v3.0.16.tar.gz
+```
+
+
+and add the following to your `build.zig`
 ```zig
 pub fn build(b: *std.Build) void {
-    ...
-    // this will also add the OpenCL headers to the executable's include path
-    your_exe.linkLibrary(b.dependency("zig-ocl", .{}).artifact("opencl")); 
+    const ocl_icd = b.dependency("zig-ocl", .{
+        .target = target,
+        .optimize = optimize
+    });
+    your_compilation.linkLibrary(ocl_icd.artifact("opencl")); 
 }
 ```
 
